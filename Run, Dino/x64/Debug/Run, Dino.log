@@ -1,0 +1,35 @@
+﻿  main.cpp
+D:\final_5_04_20\Run, Din, Run\Run, Dino\powerUp.cpp(27,19): warning C4244: аргумент: преобразование "time_t" в "unsigned int", возможна потеря данных
+D:\final_5_04_20\Run, Din, Run\Run, Dino\powerUp.cpp(30,16): warning C4244: =: преобразование "int" в "float", возможна потеря данных
+D:\final_5_04_20\Run, Din, Run\Run, Dino\cactus.cpp(14,25): warning C4244: аргумент: преобразование "double" в "float", возможна потеря данных
+D:\final_5_04_20\Run, Din, Run\Run, Dino\cactus.cpp(14,22): warning C4244: аргумент: преобразование "double" в "float", возможна потеря данных
+D:\final_5_04_20\Run, Din, Run\Run, Dino\hero.cpp(30,39): warning C4244: аргумент: преобразование "double" в "T", возможна потеря данных
+          with
+          [
+              T=float
+          ]
+D:\final_5_04_20\Run, Din, Run\Run, Dino\hero.cpp(30,36): warning C4244: аргумент: преобразование "double" в "T", возможна потеря данных
+          with
+          [
+              T=float
+          ]
+D:\final_5_04_20\Run, Din, Run\Run, Dino\hero.cpp(43,1): warning C4244: -=: преобразование "double" в "float", возможна потеря данных
+D:\final_5_04_20\Run, Din, Run\Run, Dino\hero.cpp(44,29): warning C4244: аргумент: преобразование "double" в "float", возможна потеря данных
+D:\final_5_04_20\Run, Din, Run\Run, Dino\hero.cpp(44,26): warning C4244: аргумент: преобразование "double" в "float", возможна потеря данных
+D:\final_5_04_20\Run, Din, Run\Run, Dino\hero.cpp(48,1): warning C4244: -=: преобразование "double" в "float", возможна потеря данных
+D:\final_5_04_20\Run, Din, Run\Run, Dino\hero.cpp(49,29): warning C4244: аргумент: преобразование "double" в "float", возможна потеря данных
+D:\final_5_04_20\Run, Din, Run\Run, Dino\hero.cpp(49,26): warning C4244: аргумент: преобразование "double" в "float", возможна потеря данных
+D:\final_5_04_20\Run, Din, Run\Run, Dino\hero.cpp(56,28): warning C4244: аргумент: преобразование "double" в "float", возможна потеря данных
+D:\final_5_04_20\Run, Din, Run\Run, Dino\hero.cpp(56,25): warning C4244: аргумент: преобразование "double" в "float", возможна потеря данных
+D:\final_5_04_20\Run, Din, Run\Run, Dino\main.cpp(7,17): warning C4244: аргумент: преобразование "time_t" в "unsigned int", возможна потеря данных
+D:\final_5_04_20\Run, Din, Run\Run, Dino\main.cpp(79,15): warning C4244: инициализация: преобразование "sf::Int64" в "float", возможна потеря данных
+D:\final_5_04_20\Run, Din, Run\Run, Dino\main.cpp(82,16): warning C4244: инициализация: преобразование "double" в "float", возможна потеря данных
+D:\final_5_04_20\Run, Din, Run\Run, Dino\main.cpp(83,29): warning C4244: +=: преобразование "double" в "float", возможна потеря данных
+D:\final_5_04_20\Run, Din, Run\Run, Dino\main.cpp(98,19): warning C4244: =: преобразование "double" в "float", возможна потеря данных
+D:\final_5_04_20\Run, Din, Run\Run, Dino\main.cpp(102,19): warning C4244: =: преобразование "double" в "float", возможна потеря данных
+D:\final_5_04_20\Run, Din, Run\Run, Dino\main.cpp(157,31): warning C4244: -=: преобразование "double" в "float", возможна потеря данных
+D:\final_5_04_20\Run, Din, Run\Run, Dino\main.cpp(181,32): warning C4244: -=: преобразование "double" в "float", возможна потеря данных
+D:\final_5_04_20\Run, Din, Run\Run, Dino\main.cpp(189,34): warning C4244: -=: преобразование "double" в "float", возможна потеря данных
+D:\final_5_04_20\Run, Din, Run\Run, Dino\main.cpp(265,127): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+D:\final_5_04_20\Run, Din, Run\Run, Dino\main.cpp(273,24): warning C4244: =: преобразование "int" в "float", возможна потеря данных
+  Run, Dino.vcxproj -> D:\final_5_04_20\Run, Din, Run\Run, Dino\x64\Debug\Run, Dino.exe
