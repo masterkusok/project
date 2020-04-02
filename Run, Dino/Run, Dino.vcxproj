@@ -142,11 +142,13 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="bg.cpp" />
+    <ClCompile Include="button.cpp" />
     <ClCompile Include="cactus.cpp" />
     <ClCompile Include="function.cpp" />
     <ClCompile Include="hero.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="powerUp.cpp" />
+    <ClCompile Include="trash.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Header.h" />

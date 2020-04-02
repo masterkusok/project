@@ -3,7 +3,36 @@
 
 int main()
 {
-	bool gameOver = false;
+	sf::Music music1;
+	music1.openFromFile("audio/soundtrack/soundtrack.ogg");
+	music1.setVolume(10);
+	music1.play();
+	music1.setLoop(1);
+	Trash mainTrash;
+
+	sf::SoundBuffer jump;
+	jump.loadFromFile("audio/sounds/jump_3.wav");
+	sf::Sound jumpSound;
+	jumpSound.setBuffer(jump);
+
+	sf::SoundBuffer hit;
+	hit.loadFromFile("audio/sounds/hit_1.wav");
+	sf::Sound hitSound;
+	hitSound.setBuffer(hit);
+
+	sf::SoundBuffer powerup1;
+	powerup1.loadFromFile("audio/sounds/powerup_1.wav");
+	sf::Sound powerup1Sound;
+	powerup1Sound.setBuffer(powerup1);
+	
+	sf::SoundBuffer powerup2;
+	powerup2.loadFromFile("audio/sounds/powerup_2.wav");
+	sf::Sound powerup2Sound;
+	powerup2Sound.setBuffer(powerup2);
+
+
+
+	bool gameOver = false, used = false;
 	srand(std::time(0));
 	sf::Sprite pwrUp1;
 	sf::Sprite pwrUp2;
@@ -15,7 +44,6 @@ int main()
 	pwrUp2.setTexture(pwr2);
 	PowerUp powerUp1(pwrUp1, 800);
 	PowerUp powerUp2(pwrUp2, 1300);
-
 	float score = 0;
 
 	sf::Font font;
@@ -59,13 +87,18 @@ int main()
 	sf::Sprite bg_sprite1;
 	sf::Sprite bg_sprite2;
 	sf::Texture bg_texture1;
-	sf::Texture bg_texture2;
+	sf::Texture bg_texture2 ;
 	bg_texture1.loadFromFile("images/bg.png");
 	bg_texture2.loadFromFile("images/bg.png");
 	bg_sprite1.setTexture(bg_texture1);
 	bg_sprite2.setTexture(bg_texture2);
 	Background back_g(bg_sprite1, bg_sprite2);
+	bool is_menu = true, pause = false;
 
+	int Top[10];
+	get_recs(Top);
+
+	drawMenu(window, Top);
 	while (window.isOpen())
 	{
 		sf::Event event;
@@ -75,7 +108,8 @@ int main()
 				window.close();
 		}
 
-		if (!gameOver) {
+		if (!gameOver && !pause) {
+			used = false;
 			float time = clock.getElapsedTime().asMicroseconds(); //дать прошедшее время в микросекундах
 			clock.restart();
 			time = time / 4000;
@@ -109,6 +143,7 @@ int main()
 
 			if (!mainHero.isJump) {
 				if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space)) {
+					jumpSound.play();
 					mainHero.isJump = true;
 				}
 			}
@@ -147,7 +182,18 @@ int main()
 					cts4 = true;
 					cactus_4.x = 1200 + rand() % 500;
 				}
-				createCounter += 300;
+				if (speed < 4) {
+					createCounter += 300;
+				}
+				else if (speed < 6) {
+					createCounter += 200;
+				}
+				else if(speed < 9) {
+					createCounter += 130;
+				}
+				else {
+					50;
+				}
 			}
 
 			if (powerUp1.x == powerUp2.x) {
@@ -162,6 +208,7 @@ int main()
 				powerUp2.Move_power_up(speed);
 
 				if (checkCollision(powerUp1, mainHero)) {
+					powerup1Sound.play();
 					powerUp1.take();
 					mainHero.makeDoubleScore();
 					powerUp1.x = -100;
@@ -169,6 +216,7 @@ int main()
 				}
 
 				if (checkCollision(powerUp2, mainHero)) {
+					powerup2Sound.play();
 					powerUp2.take();
 					mainHero.makeUndead();
 					powerUp2.x = -100;
@@ -208,11 +256,13 @@ int main()
 			window.clear();
 			window.draw(back_g.sprite_1);
 			window.draw(back_g.sprite_2);
+			mainTrash.drawTrash(window, time, speed);
 			window.draw(mainHero.sprite);
 			if (cts1) {
 				if (checkCactusCollision(mainHero, cactus_1)) {
 					if (!mainHero.Undead) {
 						gameOver = true;
+						hitSound.play();
 					}
 				}
 				cactus_1.Movement(speed);
@@ -222,6 +272,7 @@ int main()
 				if (checkCactusCollision(mainHero, cactus_2)) {
 					if (!mainHero.Undead) {
 						gameOver = true;
+						hitSound.play();
 					}
 				}
 				cactus_2.Movement(speed);
@@ -232,6 +283,7 @@ int main()
 				if (checkCactusCollision(mainHero, cactus_3)) {
 					if (!mainHero.Undead) {
 						gameOver = true;
+						hitSound.play();
 					}
 				}
 				
@@ -239,13 +291,12 @@ int main()
 				window.draw(cactus_3.sprite);
 			}
 			else if (cts4) {
-				
 				if (checkCactusCollision(mainHero, cactus_4)) {
 					if (!mainHero.Undead) {
 						gameOver = true;
+						hitSound.play();
 					}
 				}
-				
 				cactus_4.Movement(speed);
 				window.draw(cactus_4.sprite);
 			}
@@ -263,6 +314,11 @@ int main()
 		}
 		else {
 			FuncGameOver(window, back_g, mainHero, cts1, cts2, cts3, cts4, cactus_1, cactus_2, cactus_3, cactus_4, powerUp1, powerUp2, score);
+			get_recs(Top);
+			if (!used) {
+				set_recs(Top, int(score));
+				used = true;
+			}
 			if (gameOverContr() == 1) {
 				gameOver = false;
 				score = 0;
@@ -273,6 +329,18 @@ int main()
 				powerUp1.x = 10000 + (rand() % 10000);;
 				powerUp2.x = powerUp1.x;
 				mainHero.DoubleScore = false;
+			}
+			else if (gameOverContr() == 2) {
+				gameOver = false;
+				score = 0;
+				back_g.x_1 = 0;
+				back_g.x_2 = 2400;
+				powerUp1.isTaken = false;
+				powerUp2.isTaken = false;
+				powerUp1.x = 10000 + (rand() % 10000);;
+				powerUp2.x = powerUp1.x;
+				mainHero.DoubleScore = false;
+				drawMenu(window, Top);
 			}
 		}
 	}

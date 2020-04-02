@@ -7,7 +7,14 @@
 #include "bg.cpp"
 #include "cactus.cpp"
 #include "hero.cpp"
+#include "button.cpp"
+#include "trash.cpp"
+#include <fstream>
 
+void recs_set(int Recs[10]);
+void set_recs(int Recs[10], int score);
+void get_recs(int Recs[10]);
+void drawMenu(sf::RenderWindow& window, int Records[]);
 int choseCactus();
 int checkCollision(PowerUp power1, Hero hero);
 int checkCactusCollision(Hero hero, Cactus cactus);
